@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const session = require("expres-session");
 const connection = require("./database/database");
 
 const Article = require("./articles/Article");
@@ -15,6 +16,14 @@ const usersController = require("./users/UsersController");
 
 //Carregando a view engine
 app.set('view engine', 'ejs');
+
+//Configuações de session
+app.use(session({
+    secret: "qualquercoisa", //colocar qualquer coisa para aumentar a segurança das session
+    cookie: {
+        maxAge: 30000 // colocar o tempo em milessegundos.
+    }
+}))
 
 //Carregando os arquivos estaticos
 app.use(express.static('public'));
