@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const session = require("expres-session");
+const session = require("express-session");
 const connection = require("./database/database");
 
 const Article = require("./articles/Article");
@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 app.use(session({
     secret: "qualquercoisa", //colocar qualquer coisa para aumentar a segurança das session
     cookie: {
-        maxAge: 30000 // colocar o tempo em milessegundos.
+        maxAge: 300000 // colocar o tempo em milessegundos.
     }
 }))
 
